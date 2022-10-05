@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CompanyData } from "../../types/company-data";
 
 type CompanyListProps = {
@@ -13,8 +13,7 @@ function CompanyList({companiesData}: CompanyListProps) {
 
     {companiesData.map((company) => (
       <li className="companies-item" key={company.id}>
-      {/* <Link className="companies-item-link" to={`/00`}>{company.name}</Link> */}
-      <a className="companies-item-link" href={`/${company.name}`}>{company.name}</a>
+      <Link className="companies-item-link" to={`/`}>{company.name}</Link>
     </li>
     ))}
 

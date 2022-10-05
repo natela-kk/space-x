@@ -1,17 +1,24 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CompanyData } from "../../types/company-data";
-import Header from "../header/header";
-import MainContainer from "../main-container/main-container";
+import Layout from "../layout/layout";
+import Main from "../main/main";
+import NotFoundScreen from "../not-found/not-found";
 
 type AppProps = {
     companiesData: CompanyData[];
 }
 
-function App({companiesData}: AppProps) {
+function App({ companiesData }: AppProps) {
     return (
-        <div className="app">
-            <Header />
-                <MainContainer companiesData = {companiesData}/>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Layout companiesData={companiesData} />}>
+                    <Route index element={<Main companiesData={companiesData} />} />
+                    <Route path=":id" element={<Main companiesData={companiesData} />} />
+                </Route>
+                <Route path="*" element={<NotFoundScreen />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 

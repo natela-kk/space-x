@@ -1,0 +1,12 @@
+.layout__app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.layout__main {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    flex-grow: 1;
+}
