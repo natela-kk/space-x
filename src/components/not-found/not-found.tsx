@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import styles from './not-found.module.css';
 import {AppRoute} from '../../const';
+import Error from '../../images/error.png';
 
 function NotFoundScreen (): JSX.Element {
   return (
-    <div className={styles.notFound}>
-      <img src={"images/error.png"} alt='error'/>
-      <p className={styles.error}>404</p>
-      <p className={styles.errorText}>page not found</p>
-      <Link to={AppRoute.Main} className={styles.link}>back to the main page</Link>
+    <div className="notFound">
+      <img className="notFound__image" src={Error} alt='error' width={300}/>
+      <p className="notFound__error">404</p>
+      <p className="notFound__text">page not found</p>
+      <Link className="notFound__link" to={AppRoute.Main}>back to the main page</Link>
     </div>
   );
 }

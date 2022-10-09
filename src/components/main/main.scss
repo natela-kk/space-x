@@ -1,7 +1,7 @@
 .company-info {
     display: flex;
     flex-direction: column;
-    padding: 60px 50px 30px;
+    padding: 60px 3vw 30px 1vw;
     font-family: 'Rubik', sans-serif;
     font-size: 20px;
     font-weight: 700;
@@ -25,7 +25,8 @@
 .company-info__bays {
     margin-bottom: 40px;
     font-size: 28px;
-} 
+    line-height: 38px;
+}
 
 .company-info__bays-number {
     font-size: 30px;
@@ -38,11 +39,42 @@
 }
 
 .company-info__boxes-input {
-    width: 430px;
+    width: 50vw;
+    max-width: 450px;
     padding: 3px;
     padding-left: 10px;
     margin-top: 14px;
     border: 2px solid $black;
     font-size: 22px;
     line-height: 36px;
+}
+
+@media (max-width: $tablet_min_width) {
+    .company-info {
+        padding-top: 20px;
+        padding-left: 36px;
+    }
+
+    .company-info__title {
+        font-size: 48px;
+    }
+
+    .company-info__mail {
+        margin-bottom: 40px;
+        font-size: 18px;
+    }
+
+    .company-info__bays {
+        font-size: 24px;
+    }
+
+    .company-info__boxes {
+        font-size: 24px;
+    }
+
+    .company-info__boxes-input {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
 }

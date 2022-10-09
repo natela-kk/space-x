@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { CompanyData } from "../../types/company-data";
 
 type MainProps = {
@@ -6,8 +7,21 @@ type MainProps = {
 }
 
 function Main({ companiesData }: MainProps) {
-    const defaultCompany = companiesData[0];
-    const [boxesValue, setBoxesValue] = useState(defaultCompany.boxes);
+    let companyData = companiesData[0];
+
+    const {id} = useParams();
+
+    if(id) {
+        companyData = companiesData.filter((company) => company.id === id)[0];
+    }
+
+    const {name, email, boxes} = companyData;
+
+    const [boxesValue, setBoxesValue] = useState(boxes);
+
+    useEffect(() => {
+        setBoxesValue(boxes);
+    }, [boxes]);
 
     const getBaysNumber = () => {
         const boxesArray = boxesValue.split(',');
@@ -32,10 +46,10 @@ function Main({ companiesData }: MainProps) {
 
     return (
         <section className="company-info">
-            <h2 className='company-info__title'>{defaultCompany.name}</h2>
-            <a className="company-info__mail" href="mailto:info@companya.com">{defaultCompany.email}</a>
+            <h2 className='company-info__title'>{name}</h2>
+            <a className="company-info__mail" href="mailto:info@companya.com">{email}</a>
             <span className="company-info__bays">Number of required cargo bays:
-                <b className='company-info__bays-number'>{getBaysNumber()}</b>
+                <b className='company-info__bays-number'> {getBaysNumber()}</b>
             </span>
             <label className="company-info__boxes">
                 Cargo boxes

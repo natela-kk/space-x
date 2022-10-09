@@ -8,5 +8,19 @@
 .layout__main {
     display: grid;
     grid-template-columns: 300px 1fr;
+    gap: 30px;
     flex-grow: 1;
+}
+
+@media (max-width: $tablet_width) {
+    .layout__main {
+        grid-template-columns: 31vw 1fr;
+    }
+}
+
+@media (max-width: $tablet_min_width) {
+    .layout__main {
+        grid-template-columns: min-content 1fr;
+        gap: 0;
+    }
 }

@@ -1,6 +1,7 @@
 .companies {
     display: flex;
     flex-grow: 1;
+    max-width: 250px;
     font-family: "Rubik", sans-serif;
     font-weight: 400;
     font-size: 30px;
@@ -9,7 +10,6 @@
 }
 
 .companies {
-    max-height: 84vh;
     padding: 1rem;
     overflow-y: auto;
     direction: ltr;
@@ -32,24 +32,39 @@
     box-shadow: inset 2px 2px 5px 0 rgba($white, 0.5);
 }
 
-
-.companies-list {
+.companies__list {
     margin: 0;
-    padding: 30px;
-    padding-left: 50px;
+    padding: 3vw;
     list-style-type: none;
 }
 
-.companies-item {
-    margin-bottom: 20px;
+.companies__item {
+    margin-bottom: 30px;
+    line-height: 45px;
 }
 
-.companies-item-link {
+.companies__item-link {
     text-decoration: none;
+    line-height: 30px;
     border-bottom: 2px solid $dark_blue;
     color: $dark_blue;
 
     &:hover {
         color: $hover_dark_blue;
+    }
+}
+
+@media (max-width: $tablet_min_width) {
+    .companies {
+        padding: 0 10px;
+        font-size: 24px;
+    }
+
+    .companies__list {
+        padding: 4vw 2vw;
+    }
+
+    .companies__item {
+        margin-bottom: 20px;
     }
 }

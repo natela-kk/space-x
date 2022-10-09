@@ -1,0 +1,32 @@
+.notFound {
+  height: 500px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.notFound__image {
+  margin-top: 170px;
+}
+
+.notFound__error {
+  margin-bottom: 0px;
+  font-size: 100px;
+  font-weight: 500;
+}
+
+.notFound__text {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 100px;
+}
+
+.notFound__link {
+  background-color: $blue;
+  padding: 15px 25px;
+  color: $white;
+  text-decoration: none;
+}
+
+.notFound__link:hover {
+  background-color: $hover_blue;
+}

@@ -18,7 +18,7 @@
     display: grid;
     grid-template-columns: 60px 1fr;
     margin-right: 5vw;
-    
+
     &:hover {
         outline: 3px solid $hover_grey;
         border-radius: 2em;
@@ -82,5 +82,78 @@
 
     &:active {
         outline: 3px solid $black;
+    }
+}
+
+@media (max-width: $desktop_width) {
+    .header__buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header__search {
+        max-height: 64px;
+    }
+}
+
+@media (max-width: $tablet_width) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .header__title {
+        margin: 0;
+    }
+
+    .header__form {
+        align-items: center;
+        gap: 30px;
+    }
+
+    .header__search {
+        margin: 0;
+        align-items: center;
+    }
+
+    .header__search-icon {
+        height: 44px;
+
+        & svg {
+            height: 30px;
+            margin-top: -2px;
+        }
+    }
+
+    .header__search-input {
+        width: auto;
+    }
+
+    .header__buttons {
+        flex-direction: row;
+        gap: 20px;
+
+        & button {
+            height: 2em;
+        }
+    }
+}
+
+@media (max-width: $tablet_min_width) {
+    .header__search-input {
+        width: 75vw;
+    }
+
+    .header__form {
+        flex-direction: column;
+    }
+
+    .header__buttons {
+
+        & button {
+            width: 25vw;
+        }
     }
 }
