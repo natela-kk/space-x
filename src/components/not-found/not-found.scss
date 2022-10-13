@@ -1,5 +1,4 @@
 .notFound {
-  height: 500px;
   font-size: 24px;
   text-align: center;
 }
@@ -9,24 +8,24 @@
 }
 
 .notFound__error {
-  margin-bottom: 0px;
-  font-size: 100px;
+  margin-bottom: 20px;
+  font-size: 40px;
   font-weight: 500;
 }
 
 .notFound__text {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   margin-bottom: 100px;
 }
 
 .notFound__link {
-  background-color: $blue;
+  background-color: $purple;
   padding: 15px 25px;
   color: $white;
   text-decoration: none;
 }
 
 .notFound__link:hover {
-  background-color: $hover_blue;
+  background-color: $hover_purple;
 }

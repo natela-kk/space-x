@@ -1,16 +1,16 @@
 .companies {
+    max-height: 86vh;
     display: flex;
     flex-grow: 1;
-    max-width: 250px;
     font-family: "Rubik", sans-serif;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 60px;
-    background-color: $light_grey;
+    font-size: 26px;
+    background-color: $dark_grey;
 }
 
 .companies {
-    padding: 1rem;
+    padding: 15px;
+    padding-right: 0;
     overflow-y: auto;
     direction: ltr;
     scrollbar-color: $grey $dull_white;
@@ -21,36 +21,43 @@
     width: 10px;
 }
 
-.companies::-webkit-scrollbar-track {
-    background-color: $dull_white;
-    border-radius: 100px;
-}
-
 .companies::-webkit-scrollbar-thumb {
-    border-radius: 100px;
-    background-color: $grey;
-    box-shadow: inset 2px 2px 5px 0 rgba($white, 0.5);
+    background-color: $hover_grey;
+    margin-left: 5px;
 }
 
 .companies__list {
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    padding: 3vw;
+    padding: 10px 0 10px 15px;
+    margin-top: 20px;
     list-style-type: none;
 }
 
 .companies__item {
-    margin-bottom: 30px;
-    line-height: 45px;
+    margin-bottom: 15px;
+    padding: 5px 40px 5px 20px;
+    line-height: 40px;
+    
+    &--active {
+        padding-right: 38px;
+        background-image: linear-gradient(to right, $dark_pink, transparent);
+        border-left: 2px solid $pink;
+    }
+}
+
+.companies__item:last-child {
+    margin-bottom: 40px;
 }
 
 .companies__item-link {
     text-decoration: none;
     line-height: 30px;
-    border-bottom: 2px solid $dark_blue;
-    color: $dark_blue;
+    color: $dull_white;
 
     &:hover {
-        color: $hover_dark_blue;
+        border-bottom: 2px solid $dull_white;
     }
 }
 
@@ -68,3 +75,4 @@
         margin-bottom: 20px;
     }
 }
+

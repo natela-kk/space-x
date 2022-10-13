@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { CompanyData } from "../../types/company-data";
 import Layout from "../layout/layout";
@@ -13,9 +13,12 @@ function App({ companiesData }: AppProps) {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={AppRoute.Main} element={<Layout companiesData={companiesData} />}>
-                    <Route index element={<Main companiesData={companiesData} />} />
-                    <Route path=":id" element={<Main companiesData={companiesData} />} />
+                <Route path={AppRoute.Main} element={<Layout />}>
+                    <Route index element={<Main />} />
+                    <Route path={AppRoute.Shipments} >
+                        <Route index element={<Navigate to={AppRoute.Main} />} />
+                        <Route path={AppRoute.CompanyId} element={<Main />} />
+                    </Route>
                 </Route>
                 <Route path={AppRoute.Error} element={<NotFoundScreen />} />
             </Routes>

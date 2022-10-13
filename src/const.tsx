@@ -1,5 +1,6 @@
 export enum AppRoute {
-    Company = '/company',
+    Shipments = 'shipments',
+    CompanyId = ':id',
     Main  = '/',
     Error  = '*',
   }

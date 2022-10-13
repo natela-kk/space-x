@@ -1,46 +1,73 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { CompanyData } from "../../types/company-data";
+import { Navigate, useParams } from "react-router-dom";
+import { AppRoute } from "../../const";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { changeCompanyAction } from "../../store/action";
 
-type MainProps = {
-    companiesData: CompanyData[];
-}
+function Main() {
+    const { companies, currentCompany } = useAppSelector((state) => state);
+    const dispatch = useAppDispatch();
 
-function Main({ companiesData }: MainProps) {
-    let companyData = companiesData[0];
+    const { id } = useParams();
 
-    const {id} = useParams();
-
-    if(id) {
-        companyData = companiesData.filter((company) => company.id === id)[0];
+    if (id) {
+        const company = companies.filter((company) => company.id === id)[0];
+        dispatch(changeCompanyAction(company));
+    } else {
+        const company = companies[0];
+        dispatch(changeCompanyAction(company));
     }
 
-    const {name, email, boxes} = companyData;
+
+    const name = currentCompany?.name;
+    const email = currentCompany?.email;
+    const boxes = currentCompany?.boxes;
 
     const [boxesValue, setBoxesValue] = useState(boxes);
 
     useEffect(() => {
-        setBoxesValue(boxes);
+        if (!boxes) {
+            setBoxesValue('');
+        } else {
+            setBoxesValue(boxes);
+        }
     }, [boxes]);
 
-    const getBaysNumber = () => {
-        const boxesArray = boxesValue.split(',');
-
-        const values = boxesArray.map((box) => Number(box));
-
-        const valuesSum = values.reduce((current, next) => {
-            return current + next;
-        });
-
-        const baysNumber = Math.ceil(valuesSum / 10);
-
-        if (!baysNumber) {
-            return;
-        }
-        return baysNumber;
+    if (!currentCompany) {
+        return null;
     }
 
-    const changeBoxesValue = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!id) {
+        return (
+            <Navigate to={`${AppRoute.Shipments}/${currentCompany.id}`} />
+        )
+    }
+
+    const getBaysNumber = () => {
+        if (!boxesValue) {
+            return 0;
+        }
+        else {
+            const boxesArray = boxesValue?.split(',');
+
+            const values = boxesArray?.map((box) => Number(box));
+
+            const valuesSum = values?.reduce((current, next) => {
+                return current + next;
+            });
+
+            if (valuesSum) {
+                const baysNumber = Math.ceil(valuesSum / 10);
+
+                if (!baysNumber) {
+                    return;
+                }
+                return baysNumber;
+            }
+        }
+    }
+
+    const boxesValueChange = (e: ChangeEvent<HTMLInputElement>) => {
         setBoxesValue(e.target.value.replace(/[^\d,. ]/g, ''));
     }
 
@@ -59,7 +86,7 @@ function Main({ companiesData }: MainProps) {
                     placeholder="1, 2.2, 5, 10"
                     value={boxesValue}
                     onChange={(e) => {
-                        changeBoxesValue(e);
+                        boxesValueChange(e);
                         getBaysNumber();
                     }}
                 />
