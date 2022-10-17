@@ -97,12 +97,7 @@
 }
 
 @media (max-width: $desktop_width) {
-    .header {
-        min-height: 80px;
-    }
-
     .header__buttons {
-        flex-direction: column;
         align-self: center;
     }
 
@@ -116,13 +111,13 @@
     }
 
     .header__search-input {
-        width: auto;
+        flex-shrink: 2;
+        max-width: 28vw;
     }
 }
 
 @media (max-width: $tablet_width) {
     .header {
-        min-height: min-content;
         flex-direction: column;
         align-items: center;
     }
@@ -131,14 +126,13 @@
         margin-top: 0;
     }
 
-    .header__form {
+    .header__container {
         align-items: center;
         gap: 30px;
     }
 
     .header__search {
         margin: 0;
-        align-items: center;
     }
 
     .header__search-icon {
@@ -146,21 +140,12 @@
 
         & svg {
             height: 30px;
-            margin-top: -2px;
+            margin-top: 3px;
         }
-    }
-
-    .header__search-input {
-        width: auto;
     }
 
     .header__buttons {
-        flex-direction: row;
-        gap: 20px;
-
-        & button {
-            height: 2em;
-        }
+        margin-top: 0;
     }
 }
 

@@ -3,6 +3,7 @@ import { filterCompaniesAction, loadCompaniesAction } from "../../store/action";
 import shipments from '../../shipments.json';
 import { getSavedCompanies } from "../../utils/utils";
 import { useRef } from "react";
+import { debounce } from "lodash";
 
 function Header() {
     const { companies } = useAppSelector((state) => state);
@@ -23,25 +24,20 @@ function Header() {
     }
 
     const handleSearchChange = () => {
-        const word = searchRef.current?.value;
-        console.log(searchRef.current?.value);
+        const word = searchRef.current?.value.toLowerCase();
         if (word?.length === 0) {
             dispatch(filterCompaniesAction(companies));
         }
-
-        companies.forEach((company) => {
-            if (word) {
-                const filteredCompanies = companies.filter((company) => company.name.toLowerCase().startsWith(word));
-                console.log(filteredCompanies);
-                // if (filteredCompanies.length === 0) {
-                //     dispatch(filterCompaniesAction(companies));
-                // }
-                dispatch(filterCompaniesAction(filteredCompanies));
-            }
-            // console.log(company.name.toLowerCase().startsWith('a'));
-        })
-        // dispatch(loadCompaniesAction(filteredCompanies));
+                companies.forEach((company) => {
+                    if (word) {
+                        const filteredCompanies = companies.filter((company) => company.name.toLowerCase().startsWith(word));
+                        dispatch(filterCompaniesAction(filteredCompanies));
+                        console.log(word);
+                    }
+                })
     }
+
+    const debounceHandleSearchChange = debounce(handleSearchChange, 300);
 
     return (
         <header className="header">
@@ -60,9 +56,8 @@ function Header() {
                         placeholder="Search"
                         maxLength={100}
                         autoComplete="on"
-                        // value={search}
                         ref={searchRef}
-                        onInput={handleSearchChange} />
+                        onInput={debounceHandleSearchChange} />
                 </div>
                 <div className='header__buttons'>
                     <button className="header__load-button button"

@@ -4,7 +4,7 @@ import Header from "../header/header";
 
 function Layout() {
     return (
-        <div className="layout__app">
+        <div className="layout__container">
             <Header />
             <main className="layout__main">
                 <CompanyList />
