@@ -28,7 +28,7 @@ function CompanyList() {
 
         {companiesList.map((company) => (
           <li className={cn("companies__item", { "companies__item--active": currentCompany?.id === company.id })}
-            onClick={(e) => { handleClick(company); }}
+            onClick={() => { handleClick(company); }}
             key={company.id}>
             <Link className="companies__item-link" to={`${AppRoute.Shipments}/${company.id}`}>{company.name}</Link>
           </li>

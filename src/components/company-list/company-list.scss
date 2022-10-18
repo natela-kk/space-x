@@ -1,7 +1,4 @@
 .companies {
-    max-height: 86vh;
-    display: flex;
-    flex-grow: 1;
     font-family: "Rubik", sans-serif;
     font-weight: 400;
     font-size: 26px;
@@ -39,16 +36,12 @@
     margin-bottom: 15px;
     padding: 5px 40px 5px 20px;
     line-height: 40px;
-    
+
     &--active {
         padding-right: 38px;
         background-image: linear-gradient(to right, $dark_pink, transparent);
         border-left: 2px solid $pink;
     }
-}
-
-.companies__item:last-child {
-    margin-bottom: 40px;
 }
 
 .companies__item-link {
@@ -61,18 +54,94 @@
     }
 }
 
-@media (max-width: $tablet_min_width) {
+@media (max-width: $tablet_width) {
     .companies {
-        padding: 0 10px;
-        font-size: 24px;
-    }
-
-    .companies__list {
-        padding: 4vw 2vw;
+        font-size: 22px;
     }
 
     .companies__item {
-        margin-bottom: 20px;
+        padding: 5px 20px 5px 10px;
+        margin-bottom: 10px;
     }
 }
 
+@media (max-width: $tablet_min_width) {
+    .companies {
+        font-size: 18px;
+    }
+
+    .companies__item {
+        margin-bottom: 5px;
+    }
+
+    .companies {
+        padding: 5px;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: $mobile_width) {
+    .companies__list {
+        display: none;
+    }
+
+    .companies {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 100%;
+        overflow: hidden;
+
+        &:hover {
+            width: 225px;
+            overflow-y: auto;
+
+            &::after {
+                display: none;
+                content: "";
+                position: absolute;
+            }
+
+            & .companies__list {
+                display: block;
+                overflow-y: auto;
+            }
+        }
+    }
+
+    .companies::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0;
+        left: 0;
+        mask-image: url(../../images/sidebar.svg);
+        mask-size: 30px;
+        background-color: $white;
+        mask-repeat: no-repeat;
+        mask-position: top 10px left 7px;
+    }
+
+    //         &:hover {
+    //             .companies {
+    //                 // position: absolute;
+    //                 // top: 0;
+    //                 // left: 0;
+    //                 width: 225px;
+    //                 z-index: 10;
+    //             }
+    //         }
+    //     }
+
+    //     .companies__list {
+    //         display: none;
+    //     }
+
+    //     // .companies--open .companies__list {
+    //     //     width: 225px;
+    //     //         position: absolute;
+    //     //         overflow-y: auto;
+    //     //     }
+}

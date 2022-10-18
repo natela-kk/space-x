@@ -1,8 +1,9 @@
+import { debounce } from "lodash";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { changeCompanyAction } from "../../store/action";
+import { changeCompanyAction, updateCompanyAction } from "../../store/action";
 
 function Main() {
     const { companies, currentCompany } = useAppSelector((state) => state);
@@ -34,7 +35,12 @@ function Main() {
     }, [boxes]);
 
     if (!currentCompany) {
-        return null;
+        return (
+            <div className="company_emty">
+                <p>Click the “Load” button to load the shipments.</p>
+                <p>Click the “Save” button to save the existing state of shipments.</p>
+            </div>
+        );
     }
 
     if (!id) {
@@ -68,7 +74,10 @@ function Main() {
     }
 
     const boxesValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setBoxesValue(e.target.value.replace(/[^\d,. ]/g, ''));
+        const value = e.target.value.replace(/[^\d,. ]/g, '');
+        setBoxesValue(value);        
+        const updatedInfo = { ...currentCompany, boxes: value };
+        dispatch(updateCompanyAction(updatedInfo));
     }
 
     return (

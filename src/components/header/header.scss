@@ -68,7 +68,6 @@
 
 .header__buttons {
     display: flex;
-    margin-top: 5px;
     gap: 20px;
 }
 
@@ -99,10 +98,6 @@
 @media (max-width: $desktop_width) {
     .header__buttons {
         align-self: center;
-    }
-
-    .button {
-        padding: 7px 25px;
     }
 
     .header__search {
@@ -149,18 +144,40 @@
     }
 }
 
-@media (max-width: $tablet_min_width) {
-    .header__search-input {
-        width: 75vw;
+@media (max-width: $mobile_width) {
+    .header {
+        padding: 30px 15px;
     }
 
-    .header__form {
-        flex-direction: column;
+    .header__search {
+        grid-template-columns: 30px 1fr;
+    }
+
+    .header__search-input {
+        height: 24px;
+        font-size: 18px;
+        line-height: 24px;
+
+        &::placeholder {
+            font-size: 18px;
+            line-height: 24px;
+        }
+    }
+
+    .header__search-icon {
+        height: 28px;
+
+        & svg {
+            height: 24px;
+            margin-top: -2px;
+            margin-left: -5px;
+        }
     }
 
     .header__buttons {
         & button {
-            width: 25vw;
+            padding: 5px 10px;
+            font-size: 16px;
         }
     }
 }
