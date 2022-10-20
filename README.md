@@ -1,5 +1,5 @@
 ---
-permalink: ./public/index.html
+permalink: /index.html
 ---
 
 # Getting Started with Create React Ap
