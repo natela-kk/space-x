@@ -33,7 +33,7 @@
 }
 
 .header__search-icon {
-    max-height: 50px;
+    max-height: 30px;
     padding: 5px 10px 15px;
     border: none;
     border-radius: 2.3em 0 0 2.3em;
@@ -50,19 +50,19 @@
 
 .header__search-input {
     width: 38vw;
-    max-height: 50px;
+    max-height: 26px;
     padding: 2px 20px;
     border: none;
     border-radius: 0 2em 2em 0;
-    font-size: 28px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 30px;
 
     &:focus {
         outline: none;
     }
 
     &::placeholder {
-        font-size: 24px;
+        font-size: 16px;
     }
 }
 
@@ -74,7 +74,7 @@
 .button {
     padding: 10px 20px;
     font-family: 'Rubik', sans-serif;
-    font-size: 20px;
+    font-size: 14px;
     letter-spacing: 0.5px;
     border: none;
     border-radius: 0.4rem;
@@ -102,7 +102,7 @@
 
     .header__search {
         align-self: center;
-        max-height: 64px;
+        max-height: 30px;
     }
 
     .header__search-input {
@@ -131,10 +131,10 @@
     }
 
     .header__search-icon {
-        height: 44px;
+        height: 20px;
 
         & svg {
-            height: 30px;
+            height: 10px;
             margin-top: 3px;
         }
     }
@@ -154,7 +154,7 @@
     }
 
     .header__search-input {
-        height: 24px;
+        height: 20px;
         font-size: 18px;
         line-height: 24px;
 
@@ -177,7 +177,7 @@
     .header__buttons {
         & button {
             padding: 5px 10px;
-            font-size: 16px;
+            font-size: 8px;
         }
     }
 }

@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { CompanyData } from "../../types/company-data";
 import Layout from "../layout/layout";
@@ -11,7 +11,7 @@ type AppProps = {
 
 function App({ companiesData }: AppProps) {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path={AppRoute.Main} element={<Layout />}>
                     <Route index element={<Main />} />
@@ -22,7 +22,7 @@ function App({ companiesData }: AppProps) {
                 </Route>
                 <Route path={AppRoute.Error} element={<NotFoundScreen />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
