@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { changeCompanyAction, updateCompanyAction } from "../../store/action";
@@ -7,31 +7,38 @@ import { changeCompanyAction, updateCompanyAction } from "../../store/action";
 function Main() {
     const { companies, currentCompany } = useAppSelector((state) => state);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const { id } = useParams();
 
-    if (id) {
-        const company = companies.filter((company) => company.id === id)[0];
-        dispatch(changeCompanyAction(company));
-    } else {
-        const company = companies[0];
-        dispatch(changeCompanyAction(company));
-    }
+    useEffect(() => {
+        if (id) {
+            const company = companies.filter((company) => company.id === id)[0];
+            if (!company) {
+                navigate(AppRoute.Error);
+            }
+            dispatch(changeCompanyAction(company));
+        } else {
+            const company = companies[0];
+            dispatch(changeCompanyAction(company));
+        }
+    }, [companies, dispatch, id, navigate])
 
 
     const name = currentCompany?.name;
     const email = currentCompany?.email;
     const boxes = currentCompany?.boxes;
 
-    const [boxesValue, setBoxesValue] = useState(boxes);
+    const [boxesValue, setBoxesValue] = useState('');
 
     useEffect(() => {
-        if (!boxes) {
-            setBoxesValue('');
-        } else {
+        if (boxes) {
             setBoxesValue(boxes);
+        } else {
+            setBoxesValue('');
         }
     }, [boxes]);
+
 
     if (!currentCompany) {
         return (
@@ -44,7 +51,7 @@ function Main() {
 
     if (!id) {
         return (
-            <Navigate to={`${AppRoute.Shipments}/${currentCompany.id}`} />
+            <Navigate to={`${AppRoute.Shipments}/${currentCompany?.id}`} />
         )
     }
 
@@ -74,15 +81,19 @@ function Main() {
 
     const boxesValueChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/[^\d,. ]/g, '');
-        setBoxesValue(value);        
+        setBoxesValue(value);
         const updatedInfo = { ...currentCompany, boxes: value };
         dispatch(updateCompanyAction(updatedInfo));
     }
 
     return (
         <section className="company-info">
-            <h2 className='company-info__title'>{name}</h2>
-            <a className="company-info__mail" href="mailto:info@companya.com">{email}</a>
+            <h2 className='company-info__title'>
+                {name}
+            </h2>
+            <a className="company-info__mail" href="mailto:info@companya.com">
+                {email}
+            </a>
             <span className="company-info__bays">Number of required cargo bays:
                 <b className='company-info__bays-number'> {getBaysNumber()}</b>
             </span>

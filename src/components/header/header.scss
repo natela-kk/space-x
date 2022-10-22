@@ -96,17 +96,20 @@
 }
 
 @media (max-width: $desktop_width) {
+    .header {
+        max-height: min-content;
+        padding-bottom: 25px;
+    }
+
     .header__buttons {
         align-self: center;
     }
 
     .header__search {
         align-self: center;
-        max-height: 30px;
     }
 
     .header__search-input {
-        flex-shrink: 2;
         max-width: 28vw;
     }
 }
@@ -119,6 +122,7 @@
 
     .header__title {
         margin-top: 0;
+        margin-right: 0;
     }
 
     .header__container {
@@ -127,20 +131,28 @@
     }
 
     .header__search {
+        height: 30px;
         margin: 0;
     }
 
+    .header__search-input {
+        max-height: 26px;
+    }
+
     .header__search-icon {
-        height: 20px;
+        height: 30px;
 
         & svg {
-            height: 10px;
-            margin-top: 3px;
+            height: 30px;
         }
     }
 
     .header__buttons {
         margin-top: 0;
+    }
+
+    .button {
+        padding: 6px 20px;
     }
 }
 
@@ -154,30 +166,21 @@
     }
 
     .header__search-input {
-        height: 20px;
+        padding-left: 5px;
         font-size: 18px;
         line-height: 24px;
 
         &::placeholder {
-            font-size: 18px;
+            font-size: 16px;
             line-height: 24px;
         }
     }
 
     .header__search-icon {
-        height: 28px;
 
         & svg {
-            height: 24px;
             margin-top: -2px;
             margin-left: -5px;
-        }
-    }
-
-    .header__buttons {
-        & button {
-            padding: 5px 10px;
-            font-size: 8px;
         }
     }
 }

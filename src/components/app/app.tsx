@@ -1,15 +1,10 @@
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AppRoute } from "../../const";
-import { CompanyData } from "../../types/company-data";
 import Layout from "../layout/layout";
 import Main from "../main/main";
 import NotFoundScreen from "../not-found/not-found";
 
-type AppProps = {
-    companiesData: CompanyData[];
-}
-
-function App({ companiesData }: AppProps) {
+function App() {
     return (
         <HashRouter>
             <Routes>

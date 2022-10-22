@@ -33,7 +33,7 @@
 }
 
 .companies__item {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     padding: 5px 40px 5px 20px;
     line-height: 40px;
 
@@ -46,7 +46,6 @@
 
 .companies__item-link {
     text-decoration: none;
-    line-height: 30px;
     color: $dull_white;
 
     &:hover {
@@ -56,27 +55,25 @@
 
 @media (max-width: $tablet_width) {
     .companies {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .companies__item {
+        margin-bottom: 13px;
         padding: 5px 20px 5px 10px;
-        margin-bottom: 10px;
+        line-height: 25px;
     }
 }
 
 @media (max-width: $tablet_min_width) {
     .companies {
-        font-size: 18px;
+        font-size: 16px;
+        padding: 5px;
+        padding-right: 0;
     }
 
     .companies__item {
-        margin-bottom: 5px;
-    }
-
-    .companies {
-        padding: 5px;
-        padding-right: 0;
+        margin-bottom: 7px;
     }
 }
 
@@ -123,25 +120,4 @@
         mask-repeat: no-repeat;
         mask-position: top 10px left 7px;
     }
-
-    //         &:hover {
-    //             .companies {
-    //                 // position: absolute;
-    //                 // top: 0;
-    //                 // left: 0;
-    //                 width: 225px;
-    //                 z-index: 10;
-    //             }
-    //         }
-    //     }
-
-    //     .companies__list {
-    //         display: none;
-    //     }
-
-    //     // .companies--open .companies__list {
-    //     //     width: 225px;
-    //     //         position: absolute;
-    //     //         overflow-y: auto;
-    //     //     }
 }

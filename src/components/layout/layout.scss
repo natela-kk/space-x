@@ -1,27 +1,31 @@
 .layout__container {
     max-height: 100%;
     display: grid;
-    grid-template-rows: 14vh 86vh;
+    grid-template-rows: 142px 871px;
 }
 
 .layout__main {
     position: relative;
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 250px 1fr;
 }
 
 @media (max-width: $tablet_width) {
     .layout__container {
-        grid-template-rows: 172px 841px;
+        grid-template-rows: 150px 863px;
     }
     
     .layout__main {
-        grid-template-columns: min-content 1fr;
+        grid-template-columns: 200px 1fr;
     }
 }
 
 @media (max-width: $mobile_width) {
     .layout__container {
-        grid-template-rows: 152px 861px;
+        grid-template-rows: 140px 873px;
+    }
+
+    .layout__main {
+       display: block;
     }
 }
