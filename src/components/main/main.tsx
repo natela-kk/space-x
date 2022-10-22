@@ -14,7 +14,7 @@ function Main() {
     useEffect(() => {
         if (id) {
             const company = companies.filter((company) => company.id === id)[0];
-            if (!company) {
+            if (!company && companies.length > 0) {
                 navigate(AppRoute.Error);
             }
             dispatch(changeCompanyAction(company));
