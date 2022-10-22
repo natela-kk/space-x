@@ -24,7 +24,6 @@ export const reducer = createReducer(initialState, (builder) => {
         })
         .addCase(updateCompanyAction, (state, action) => {
             const companyIndex = state.companies.findIndex((company) => company.id === state.currentCompany?.id);
-                console.log(companyIndex);
                 state.companies = [
                     ...state.companies.slice(0, companyIndex),
                     action.payload,

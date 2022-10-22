@@ -32,7 +32,6 @@ function Header() {
                     if (word) {
                         const filteredCompanies = companies.filter((company) => company.name.toLowerCase().startsWith(word));
                         dispatch(filterCompaniesAction(filteredCompanies));
-                        console.log(word);
                     }
                 })
     }
